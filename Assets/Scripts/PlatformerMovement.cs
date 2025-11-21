@@ -30,6 +30,8 @@ public class PlatformerMovement : MonoBehaviour
     private bool jumpReleased;
     private bool wasGrounded;
     private bool isGrounded;
+    public KeyManager km;
+    
 
     [SerializeField] private Animator animator;
     
@@ -174,6 +176,14 @@ public class PlatformerMovement : MonoBehaviour
         {
             jumpReleased = true;
             jumpInput = false;
+        }
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Key")) ;
+            Destroy(other.gameObject);
+            km.keyCount++;
+
+
         }
     }
 }
